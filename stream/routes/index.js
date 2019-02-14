@@ -24,4 +24,17 @@ router.get('/read', (req,res) => {
   console.log('done...');
 })
 
+
+
+router.get('/write', (req,res) => { 
+    console.log('writing...');
+  try {
+    const stream = fs.createWriteStream('./writen.txt');
+    stream.write('test msg.');
+    res.send('contents written to file ...')     
+  } catch (error) {
+    console.error(error);
+  }  
+})
+
 module.exports = router;
